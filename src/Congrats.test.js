@@ -1,26 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Enzyme, { shallow } from 'enzyme';
+import EnzymeAdapter from 'enzyme-adapter-react-16';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import { findByTestAttr } from '../test/testUtils';
+import Congrats from './Congrats';
 
-export default App;
+Enzyme.configure({ adapter: new EnzymeAdapter() });
+
+const setup = (props = {}) => {
+  return shallow(<Congrats {...props} />);
+};
+
+test('renders without error', () => {
+  const wrapper = setup();
+  const component = findByTestAttr(wrapper, 'component-congrats');
+  expect(component.length).toBe(1);
+});
+
+test("renders no text when 'success' prop is false", () => {
+  const wrapper = setup({ success: false });
+  const component = findByTestAttr(wrapper, 'component-congrats');
+  expect(component.text()).toBe('');
+});
+
+test("renders non-empty congrats message when 'success' prop is true", () => {
+  const wrapper = setup({ success: true });
+  const component = findByTestAttr(wrapper, 'component-congrats');
+  expect(component.text().lentgh).not.toBe(0);
+});
