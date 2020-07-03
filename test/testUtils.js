@@ -6,7 +6,7 @@ export const findByTestAttr = (wrapper, val) => {
 
 export const checkProps = (component, confirmingProps) => {
   const propError = CheckPropTypes(
-    component.propTypes,
+    component.PropTypes,
     confirmingProps,
     'prop',
     component.name
