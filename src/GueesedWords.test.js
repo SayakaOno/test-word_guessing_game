@@ -52,4 +52,26 @@ describe('if there are words guessed', () => {
     const guessedWordsNodes = findByTestAttr(wrapper, 'guessed-word');
     expect(guessedWordsNodes.length).toBe(guessedWords.length);
   });
+  test('guess number column displays correct number', () => {
+    guessedWords.forEach((_, index) => {
+      const guessNumber = findByTestAttr(wrapper, 'guess-number').at(index);
+      expect(guessNumber.text()).toBe((index + 1).toString());
+    });
+  });
+  test("renders 'number of guesses' section", () => {
+    const guessedTotalNumberNode = findByTestAttr(
+      wrapper,
+      'guessed-total-number'
+    );
+    expect(guessedTotalNumberNode.length).toBe(1);
+  });
+  test('display correct number of guesses', () => {
+    const guessedTotalNumberNode = findByTestAttr(
+      wrapper,
+      'guessed-total-number'
+    );
+    expect(guessedTotalNumberNode.text()).toContain(
+      guessedWords.length.toString()
+    );
+  });
 });
