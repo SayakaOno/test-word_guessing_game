@@ -41,7 +41,7 @@ describe('guessWord action dispatcher', () => {
       expect(newState).toEqual(expectedState);
     });
   });
-  describe('ome guessed words', () => {
+  describe('some guessed words', () => {
     const guessedWords = [{ guessedWord: 'agile', letterMatchCount: 1 }];
     const initialState = { guessedWords, secretWord };
     let store;

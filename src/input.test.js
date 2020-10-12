@@ -37,7 +37,8 @@ describe('render', () => {
   describe('word has been guessed', () => {
     let wrapper;
     beforeEach(() => {
-      wrapper = setup({ success: true });
+      const initialState = { success: true };
+      wrapper = setup(initialState);
     });
     test('does not render component without error', () => {
       const component = findByTestAttr(wrapper, 'component-input');
