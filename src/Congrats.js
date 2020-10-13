@@ -12,14 +12,6 @@ export const UnconnectedCongrats = props => {
             Congratulations! You guessed the word!
           </span>
         </div>
-        <button
-          data-test="new-word-button"
-          className="btn btn-primary mb-2"
-          type="submit"
-          onClick={props.getSecretWord}
-        >
-          New Word
-        </button>
       </>
     );
   } else {
