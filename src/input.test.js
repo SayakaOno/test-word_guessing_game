@@ -86,8 +86,8 @@ describe('"guessWord" action creator call', () => {
     submitButton.simulate('click', { preventDefault() {} });
   });
   test('calls "guessWord" when submit button is clicked', () => {
-    const guessWordMockCallsLength = guessWordMock.mock.calls.length;
-    expect(guessWordMockCallsLength).toBe(1);
+    const guessWordCallCount = guessWordMock.mock.calls.length;
+    expect(guessWordCallCount).toBe(1);
   });
   test("calls 'guessWord' with input value as argument", () => {
     const guessedWordArg = guessWordMock.mock.calls[0][0];
