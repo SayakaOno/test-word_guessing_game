@@ -36,3 +36,12 @@ export const getSecretWord = () => {
     });
   };
 };
+
+export const setSecretWord = word => {
+  return dispatch => {
+    dispatch({
+      type: actionTypes.SET_SECRET_WORD,
+      payload: word
+    });
+  };
+};
